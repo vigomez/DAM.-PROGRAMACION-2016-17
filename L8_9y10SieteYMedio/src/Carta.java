@@ -6,6 +6,7 @@ public class Carta {
 	
 	//Propiedades, publicas para acceder desde fuera
 	//Privadas solo accesibles desde la clase. Es necesario un método para asignarlos.
+	//Protected: accesibles clases hijas (Herencia). Facilitan reutilización de código.
 
 	protected int numero;
 	protected String palo;

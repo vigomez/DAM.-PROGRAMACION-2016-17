@@ -50,11 +50,18 @@ public class Principal extends JFrame {
 		System.out.println("Carta es: "+sieteBastos.numero+" y palo: "+sieteBastos.palo);
 		*/
 		
+		//Carta de la Baraja española
 		Carta sieteBastos=new Carta();
 		sieteBastos.setNumero(7);	//asigna el 7 a la carta
 		//sieteBastos.setPalo("BASTOS"); //asigna bastos a la carta
 		sieteBastos.setPalo(Carta.BASTOS); //idem utilizando la constante
 		System.out.println("Carta es: "+sieteBastos.getNumero()+" y palo: "+sieteBastos.getPalo());
+		
+		//Carta de Póker
+		Carta diezPicas=new CartaPoker();
+		diezPicas.setNumero(10);	//asigna el 10 a la carta
+		diezPicas.setPalo(CartaPoker.PICAS); //idem utilizando la constante
+		System.out.println("Carta es: "+diezPicas.getNumero()+" y palo: "+diezPicas.getPalo());
 		
 	}
 
