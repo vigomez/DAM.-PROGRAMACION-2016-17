@@ -7,8 +7,8 @@ public class Carta {
 	//Propiedades, publicas para acceder desde fuera
 	//Privadas solo accesibles desde la clase. Es necesario un método para asignarlos.
 
-	private int numero;
-	private String palo;
+	protected int numero;
+	protected String palo;
 	
 	//Constantes
 	public static final String BASTOS="BASTOS";
