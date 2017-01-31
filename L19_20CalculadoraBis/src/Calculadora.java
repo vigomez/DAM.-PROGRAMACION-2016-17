@@ -18,7 +18,7 @@ public class Calculadora extends JFrame {
 	private JPanel contentPane;
 
 	//Un objeto operaciones
-	private Operaciones op=new Operaciones();
+	private Operaciones op;
 	
 	//botones números (opciones de refactor de Eclipse facilitan organización)
 	private JButton boton1 = new JButton("1");
