@@ -11,7 +11,7 @@ public class Usuarios {
 		usuariosDB=new ConexionDB("localhost","usuarios","root","");
 		
 		//Ejemplo para un host externo
-		//corredoresDB=ConexionDB.getInstance("mysql.hostinger.es","u499092340_dam20","u499092340_dam20","12345");
+		//usuariosDB=ConexionDB("mysql.hostinger.es","u499092340_dam20","u499092340_dam20","12345");
 		
 		
 		//Establecemos la conexion
