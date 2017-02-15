@@ -13,7 +13,7 @@ import java.sql.Connection;
 * 
 */
 public class UsuariosDB {
-	//Campos de la tabla
+	//Campos de la tabla usuario
 	private int id;
 	private String nombre;
 	private String apellido1;
@@ -52,6 +52,7 @@ public class UsuariosDB {
 			         if(orden!=null)
 			        	 conexion.close();
 			      }catch(SQLException se){
+			    	  se.printStackTrace();
 			      }
 			      try{
 			         if(conexion!=null)
