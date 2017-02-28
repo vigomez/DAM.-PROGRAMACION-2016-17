@@ -41,20 +41,23 @@ public class AgregandoMenu extends JFrame {
 	 */
 	public AgregandoMenu() {
 		
-		//Utilizamos un BorderLayout
+		//Utilizamos un BorderLayout (divide panel en 5 zonas, norte, sur, laterales y central
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout(0, 0));
 		
+		//Añadimos un TextField a la parte inferior del BorderLayour
 		informacion = new JTextField();
 		informacion.setEditable(false);
 		getContentPane().add(informacion, BorderLayout.SOUTH);
 		informacion.setColumns(10);
 		
+		//Añadioms un JPanes en la parte central del BorderLayour
 		JPanel aplicacion = new JPanel();
 		getContentPane().add(aplicacion, BorderLayout.CENTER);
 		aplicacion.setLayout(null);
 		
+		//Anadimos un label y un botón al JPanel anteriro
 		JLabel lblEtiqueta = new JLabel("Etiqueta");
 		lblEtiqueta.setBounds(10, 11, 46, 14);
 		aplicacion.add(lblEtiqueta);
@@ -63,10 +66,12 @@ public class AgregandoMenu extends JFrame {
 		btnNewButton.setBounds(10, 38, 89, 23);
 		aplicacion.add(btnNewButton);
 		
+		//Añadimos un MenuBar
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
+		//Al menuBar añadimos dos opciones: Lista y Item1, a este último le añadimos un listener
 		JMenu mnLista = new JMenu("Lista");
 		menuBar.add(mnLista);
 		
@@ -77,6 +82,8 @@ public class AgregandoMenu extends JFrame {
 				informacion.setText("He tecleado informacion");
 			}
 		});
+		
+		//Añadimos varias opciones a la opción de menú Lista
 		
 		mnLista.add(mntmItem);
 		
@@ -96,6 +103,7 @@ public class AgregandoMenu extends JFrame {
 		//Añadir separador
 		mnLista.addSeparator();
 		
+		//Como añadir un submenú que a su vez se podrá desplegar en opciones
 		JMenu mnSubmenu = new JMenu("Submenu");
 		mnLista.add(mnSubmenu);
 		
@@ -105,6 +113,7 @@ public class AgregandoMenu extends JFrame {
 		//Añadir separador
 		mnLista.addSeparator();
 		
+		//Como añadir a un menu Check Buttons y Radio Buttons
 		JCheckBoxMenuItem chckbxmntmCheck = new JCheckBoxMenuItem("Check");
 		mnLista.add(chckbxmntmCheck);
 		
