@@ -64,10 +64,10 @@ public class ProbandoGridBagLayout extends JFrame {
 		
 		JButton btnNewButton2 = new JButton("Boton2");
 		GridBagConstraints gbc_btnNewButton2 = new GridBagConstraints();
+		gbc_btnNewButton2.anchor = GridBagConstraints.NORTH;
 		gbc_btnNewButton2.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnNewButton2.weightx = 0.8;
 		gbc_btnNewButton2.insets = new Insets(0, 0, 5, 0);
-		gbc_btnNewButton2.anchor = GridBagConstraints.NORTH;
 		//gbc_btnNewButton.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnNewButton2.gridx = 1;
 		gbc_btnNewButton2.gridy = 0;
