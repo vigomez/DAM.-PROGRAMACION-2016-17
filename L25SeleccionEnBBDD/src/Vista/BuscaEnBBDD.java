@@ -90,7 +90,7 @@ public class BuscaEnBBDD extends JFrame {
 		campos.add(edadTxt);
 		edadTxt.setColumns(10);
 		
-		//Boton de registro
+		//Boton de búsqueda
 		JPanel panel = new JPanel();
 		contentPane.add(panel);
 		panel.setLayout(new FlowLayout(FlowLayout.RIGHT, 5, 5));

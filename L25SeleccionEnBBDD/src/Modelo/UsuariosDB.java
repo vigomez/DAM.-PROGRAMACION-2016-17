@@ -115,6 +115,7 @@ public class UsuariosDB {
 		
 	//Método que permite buscar un usuario en la base de datos devolviendolos en un JComboBox
 	//Busca los usuarios por el nombre y devuelve todos los que tienen el mismo nombre
+	//Método sobrecargado
 		public void buscarUsuario(String nombreBuscar,JComboBox jc){
 			ResultSet rs;
 			try{
