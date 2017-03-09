@@ -1,6 +1,5 @@
 package Vista;
 
-
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -32,13 +31,20 @@ public class BuscaEnBBDD extends JFrame {
 	//Contenedor Principal BorderLayout
 	private JPanel contentPane;
 	//Contenedor de los campos de registro
-	private JPanel campos = new JPanel();
+	private JPanel campos;
+	//Contenedor para el botón buscar
+	private JPanel panel;
 	
 	//Campos
 	private JTextField nombreTxt;
 	private JTextField apellido1Txt;
 	private JTextField apellido2Txt;
 	private JTextField edadTxt;
+	private JLabel lblNombre;
+	private JLabel lblApellido1;
+	private JLabel lblApellido2;
+	private JLabel lblEdad;
+	private JButton botonBuscar;
 
 	//Manejadores de la base de datos
 		private ConexionDB db;
@@ -53,52 +59,55 @@ public class BuscaEnBBDD extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 172);
 		
-		//Campos de registro
+		//Panel Principal
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 
+		//Panel para las etiquetas y los campos de nombre, apellidos y edad
+		campos = new JPanel();
 		contentPane.add(campos);
 		campos.setLayout(new GridLayout(0, 2, -200, 5));
+		contentPane.add(campos, BorderLayout.NORTH);
 		
-		JLabel lblEdad = new JLabel("Nombre");
-		campos.add(lblEdad);
+		lblNombre = new JLabel("Nombre");
+		campos.add(lblNombre);
 		
 		nombreTxt = new JTextField();
 		campos.add(nombreTxt);
 		nombreTxt.setColumns(10);
 		
-		JLabel labelApellido1 = new JLabel("Apellido1");
-		campos.add(labelApellido1);
+		lblApellido1 = new JLabel("Apellido1");
+		campos.add(lblApellido1);
 		
 		apellido1Txt = new JTextField();
 		campos.add(apellido1Txt);
 		apellido1Txt.setColumns(10);
 		
-		JLabel lblApellido2 = new JLabel("Apellido2");
+		lblApellido2 = new JLabel("Apellido2");
 		campos.add(lblApellido2);
 		
 		apellido2Txt = new JTextField();
 		campos.add(apellido2Txt);
 		apellido2Txt.setColumns(10);
 		
-		JLabel lblEdad_1 = new JLabel("Edad");
-		campos.add(lblEdad_1);
+		lblEdad = new JLabel("Edad");
+		campos.add(lblEdad);
 		
 		edadTxt = new JTextField();
 		campos.add(edadTxt);
 		edadTxt.setColumns(10);
 		
-		//Boton de búsqueda
-		JPanel panel = new JPanel();
+		//Panel para el botón de búsqueda
+		panel = new JPanel();
 		contentPane.add(panel);
 		panel.setLayout(new FlowLayout(FlowLayout.RIGHT, 5, 5));
 		
-		//Buscamos al usuario y cerramos la conexion
-		JButton btnNewButton = new JButton("Buscar");
-		btnNewButton.setBackground(Color.YELLOW);
-		btnNewButton.addActionListener(new ActionListener() {
+		//Botón de búsqueda: Buscamos al usuario y cerramos la conexion
+		botonBuscar = new JButton("Buscar");
+		botonBuscar.setBackground(Color.YELLOW);
+		botonBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Conectar(); //Conectamos con BBDD
 				Usuario u=udb.buscarUsuario(nombreTxt.getText()); //Buscamos usuario y cerramos conexion
@@ -107,9 +116,9 @@ public class BuscaEnBBDD extends JFrame {
 				edadTxt.setText(String.valueOf(u.getEdad()));
 			}
 		});
-		panel.add(btnNewButton);
+		panel.add(botonBuscar);
 		
-		contentPane.add(campos, BorderLayout.NORTH);
+
 		
 		
 	}

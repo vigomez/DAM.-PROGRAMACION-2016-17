@@ -31,9 +31,11 @@ public class BuscaBDjCBox extends JFrame {
 	
 	    //Contenedor Principal 
 		private JPanel contentPane;
+		//Contenedores secundarios
+		private JPanel campos;
+		private JPanel panel;
 		
-		//Contenedor de los campos de registro
-		private JPanel campos = new JPanel();
+		//Campos de registro, botones y áreas de texto
 		private JTextField nombreTxt;
 		private JTextField apellido1Txt;
 		private JTextField apellido2Txt;
@@ -65,14 +67,18 @@ public class BuscaBDjCBox extends JFrame {
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			setBounds(100, 100, 467, 227);
 			
-			//Campos de registro
+			//El JPanel General del JFRAME es un BorderLayout
 			contentPane = new JPanel();
 			contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 			setContentPane(contentPane);
 			contentPane.setLayout(new BorderLayout(0, 0));
 
+			//Al JPanel general se le añade un JPanel "campos" tipo GridLayout
+			//para los campos: ComboBox, nombre, apellido1, apellido2, edad.
+			campos = new JPanel();
 			contentPane.add(campos);
 			campos.setLayout(new GridLayout(0, 2, -300, 5));
+			contentPane.add(campos, BorderLayout.NORTH);
 			
 			lblUsuarios = new JLabel("Usuarios");
 			campos.add(lblUsuarios);
@@ -85,18 +91,15 @@ public class BuscaBDjCBox extends JFrame {
 			
 			comboBox.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					//Por defecto mostrará en pantalla la última coincidencia con el
+					//Por defecto mostrará en pantalla la primera coincidencia con el
 					//nombre encontrado en la BBDD
 					//Seleccionando sobre el desplegable del JComboBox se podrá cambiar si hay varias coincidencias
 					
 					Usuario u=(Usuario)comboBox.getSelectedItem();
 					
-					if (u==null) //Si el nombre buscado no está en la lista
-					{apellido1Txt.setText("Usuario no encontrado");
-					apellido2Txt.setText("Usuario no encontrado");
-					edadTxt.setText("Usuario no encontrado");}
-					else
+					if (u!=null) //Si la lista no del Combox no está vacía
 					{
+				    nombreTxt.setText(u.getNombre());
 					apellido1Txt.setText(u.getApellido1());
 					apellido2Txt.setText(u.getApellido2());
 					edadTxt.setText(String.valueOf(u.getEdad()));
@@ -138,12 +141,14 @@ public class BuscaBDjCBox extends JFrame {
 			campos.add(edadTxt);
 			edadTxt.setColumns(10);
 			
-			//Boton de Busqueda de usuario
-			JPanel panel = new JPanel();
-			contentPane.add(panel);
+			//Al JPanel Principal añadimos otro Panel para el botón buscar
+			panel = new JPanel();
+			//contentPane.add(panel);
 			panel.setLayout(new FlowLayout(FlowLayout.RIGHT, 5, 5));
+			contentPane.add(panel, BorderLayout.CENTER);
+
 			
-			//Buscamos usuario por nombre y los encontrados los ponemos en el Combos
+			//Botón Buscar: Buscamos usuario por nombre y los encontrados los ponemos en el Combox
 			btnBuscar = new JButton("Buscar");
 			btnBuscar.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
@@ -155,7 +160,7 @@ public class BuscaBDjCBox extends JFrame {
 					udb.buscarUsuario(nombreTxt.getText(),comboBox);
 					
 					numero_de_items=comboBox.getItemCount(); //Número de ítems en el ComboBox
-					//Sirve para el caso en que el primer nombre a buscar no esté en la lista
+					//Sirve para el caso en que el nombre buscado no está en la BBDD y el Combox esté vacío
 					if (numero_de_items==0){
 					apellido1Txt.setText("Usuario no encontrado");
 					apellido2Txt.setText("Usuario no encontrado");
@@ -164,8 +169,6 @@ public class BuscaBDjCBox extends JFrame {
 			});
 			panel.add(btnBuscar);
 			
-			contentPane.add(campos, BorderLayout.NORTH);
-
 			
 
 	}
