@@ -9,8 +9,8 @@ import java.sql.Statement;
 //Clase para sacar los datos de la tabla usuario de la BBDD usuarios
 
 public class modeloUsuarios {
-	//DEVOLVER CORREDORES
-	//BBDD usuarios, con tabla usuario
+
+	//BBDD usuarios, con tabla usuario. Sentencia SQL
 	private static String USUARIOS_LIST="SELECT * FROM usuario";
 	
 	//Debe coincidir con los nombres de los campos de tabla usuario:id, nombre, apellido1, ....
@@ -40,11 +40,11 @@ public class modeloUsuarios {
 
 			//Listaremos por pantalla los datos
 			while( conjuntoResultados.next() ) {
-				System.out.print(conjuntoResultados.getInt(ID_COL)+";");
-				System.out.print(conjuntoResultados.getString(NOMBRE_COL)+";");
-				System.out.print(conjuntoResultados.getString(APELLIDO1_COL)+";");
-				System.out.print(conjuntoResultados.getString(APELLIDO2_COL)+";");
-				System.out.println(conjuntoResultados.getInt(EDAD_COL)+";\n");
+				System.out.print(conjuntoResultados.getInt(ID_COL)+". ");
+				System.out.print(conjuntoResultados.getString(NOMBRE_COL)+" ");
+				System.out.print(conjuntoResultados.getString(APELLIDO1_COL)+" ");
+				System.out.print(conjuntoResultados.getString(APELLIDO2_COL)+", ");
+				System.out.println(conjuntoResultados.getInt(EDAD_COL)+".\n");
 			}// fin de while
 		}
 		catch( SQLException excepcionSql ) 
@@ -52,7 +52,7 @@ public class modeloUsuarios {
 			excepcionSql.printStackTrace();
 		}
 		finally{
-			try{
+			try{ //Cerramos la conexión
 				conjuntoResultados.close();
 				instruccion.close();
 				conexion.close();

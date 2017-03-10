@@ -22,6 +22,7 @@ public class ConexionDB {
 	//Instancia unica
 	private static ConexionDB instance = null;
 	
+	//Para implementar el patrón SingleTon el constructor de la clase se define como private
 	private ConexionDB(String HOST,String BBDD,String USER,String PASS) {
 		this.host=HOST;
 		this.bbdd=BBDD;
@@ -30,7 +31,11 @@ public class ConexionDB {
 		this.url="jdbc:mysql://"+this.host+"/"+this.bbdd;
 	}
 	
-	//Implementar SingleTon
+	//Implementar SingleTon: solo se crea un objeto de la clase si no hay otro creado y se define static
+	//Solo hay una copia del mismo y su valor es compartido por todos los objetos de la clase, por lo que
+	//aunque se declare e intente crear un nuevo objeto ConexionDB éste no podrá crear una nueva conexión
+	//a la BBDD
+	
 	public static ConexionDB getInstance(String HOST,String BBDD,String USER,String PASS) {
 	      if(instance == null) {
 	         instance = new ConexionDB(HOST,BBDD,USER,PASS);
@@ -38,6 +43,7 @@ public class ConexionDB {
 	      return instance;
 	   }
 	
+	//Conectamos con la BBDD
 	public boolean connectDB(){
 		try{
 			//Lo primero es cargar el controlador MySQL el cual automáticamente se registra
@@ -58,6 +64,7 @@ public class ConexionDB {
 		return true;
 	}
 	
+	//Permite recoger la conexión establecida
 	public Connection getConexion(){
 		return this.conexion;
 	}

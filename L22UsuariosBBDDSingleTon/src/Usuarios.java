@@ -9,8 +9,7 @@ public class Usuarios {
 	public static void main(String[] args) {
 
 		
-		//Generado el objeto
-		//Generado el objeto
+		//Generado el objeto usuariosDB que creará una única instancia static de esta clase
 		usuariosDB=ConexionDB.getInstance("localhost","usuarios","root","");
 		
 		//Ejemplo para un host externo
@@ -26,9 +25,10 @@ public class Usuarios {
         //Comprobamos si hemos conectado y sacamos por consola los datos de la tabla
 		if(connected) {
 			System.out.println("CONECTADOS CON EXITO\n");
+			System.out.println("LISTADO DE USUARIOS\n");
 			mUsuario=new modeloUsuarios(conexion);
 			mUsuario.getDatosCorredores();
-            System.out.println("LISTADO DE CORRREDORES\n");
+            
 		}
 		else System.out.println("ERROR EN LA CONEXION");
 	    }
