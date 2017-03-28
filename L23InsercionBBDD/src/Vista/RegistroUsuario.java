@@ -125,30 +125,58 @@ public class RegistroUsuario extends JFrame {
 		
 		//Registramos nuevo usuario y cerramos la conexion
 		btn_registro = new JButton("Registro");
-		btn_registro.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				udb.insertarUsuario(nombreTxt.getText(), apellido1Txt.getText(), apellido2Txt.getText(), Integer.valueOf(edadTxt.getText()));
-			}
-		});
+		btn_registro.addActionListener(new miBotonRegistrar()); //Insertará nuevo usuario en la BBDD
 		registro.add(btn_registro);
 		
 		
+		//Conectamos con la BBDD
 		
-		//Creamos nuestro objeto para el manejo de la base de datos
-		db=new ConexionDB("localhost","usuarios","root","");
-		//Establecemos la conexion
-		connected=db.connectDB();
-		//Asignamos con el getter la conexion establecida
-		conexion=db.getConexion();
-		//Pasamos la conexión a un nuevo objeto UsuariosDB para insertar datos.
-		udb=new UsuariosDB(conexion); 
-		
-        
-		//Comprobamos si la conexión ha tenido éxito
-		if(connected==false) {
-			System.out.println("SIN EXITO EN LA CONEXION");
-		}
-		else System.out.println("EXITO EN LA CONEXION");
+		Conectar();
 	}
+	
+	//Métodos de la Clase
+
+			//Conectar con la base de datos
+			private void Conectar(){
+				//Conexión con la BBDD
+				//Creamos nuestro objeto para el manejo de la base de datos
+				try{
+					db=new ConexionDB("localhost","usuarios","root","");
+					//Establecemos la conexion
+					connected=db.connectDB();
+					//Asignamos con el getter la conexion establecida
+					conexion=db.getConexion();
+					//Pasamos la conexión a un nuevo objeto UsuariosDB para insertar datos.
+					udb=new UsuariosDB(conexion);
+					
+					if(connected==false) {
+						System.out.println("SIN EXITO EN LA CONEXION");
+					}
+					else System.out.println("EXITO EN LA CONEXION");
+					
+					}
+				catch(Exception e)
+				{
+					System.out.println( " Debe haber algún problema con la BBDD o con la conexión.");	
+				}
+			}
+			
+			//Listener para el botón registrar
+			//Listener para el boton Buscar
+			private class miBotonRegistrar implements ActionListener {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					
+					//Insertamos nuevo usuario en la BBDD y después cerramos la conexión
+					try{
+						udb.insertarUsuario(nombreTxt.getText(), apellido1Txt.getText(), apellido2Txt.getText(), Integer.valueOf(edadTxt.getText()));
+					}
+					catch(Exception e1)
+					{
+						System.out.println( " Debe haber algún problema con la BBDD o con la conexión.");
+					}
+					}
+			}
 
 }

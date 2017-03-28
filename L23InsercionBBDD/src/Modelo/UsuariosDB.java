@@ -13,12 +13,6 @@ import java.sql.Connection;
 * 
 */
 public class UsuariosDB {
-	//Campos de la tabla usuario
-	private int id;
-	private String nombre;
-	private String apellido1;
-	private String apellido2;
-	private String edad;
 	
 	//Conexion a la base de datos
 	private Connection conexion;
@@ -50,7 +44,7 @@ public class UsuariosDB {
 			      //Cerramos los recursos
 			      try{
 			         if(orden!=null)
-			        	 conexion.close();
+			        	 orden.close();
 			      }catch(SQLException se){
 			    	  se.printStackTrace();
 			      }
