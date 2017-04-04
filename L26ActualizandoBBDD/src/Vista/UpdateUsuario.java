@@ -59,6 +59,7 @@ public class UpdateUsuario extends JFrame {
 		private JLabel lblApellido2;
 		private JLabel lblEdad;
 		private JButton btnBuscar;
+		private JButton btnActualizar;
 		private JTextArea textMensajes;
 		
 
@@ -71,10 +72,9 @@ public class UpdateUsuario extends JFrame {
 		//JCOmbobox de usuarios
 		private JComboBox comboBox;
 		private int numero_de_items; //numero de elementos en el ComboBox
-		private JButton btnActualizar;
+
 		
-		//Objeto usuario, a nivel de clase para que sea visible a toda
-		
+		//Objeto usuario, a nivel de clase para que sea visible a toda		
 		private Usuario u;
 
 		
