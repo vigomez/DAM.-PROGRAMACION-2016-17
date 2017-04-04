@@ -101,7 +101,7 @@ public class UsuariosDB {
 			      //Cerramos los recursos
 			      try{
 			         if(orden!=null)
-			        	 conexion.close();
+			        	 orden.close();
 			      }catch(SQLException se){
 			      }
 			      try{
@@ -121,7 +121,7 @@ public class UsuariosDB {
 			try{
 				orden = conexion.createStatement();
 				  /*Si quisiésemos que devolviese todos los usuarios de la BBDD en el COMBOX haríamos
-				   * String sql = "SELECT id,nombre, apellido1, apellido2, edad FROM usuarios";
+				   * String sql = "SELECT id,nombre, apellido1, apellido2, edad FROM usuario";
 				   * y eliminaríamos el input de nombreBuscar en el método
 				   */
 			      String sql = "SELECT id,nombre, apellido1, apellido2, edad FROM usuario WHERE nombre='"+nombreBuscar+"'";
@@ -153,7 +153,7 @@ public class UsuariosDB {
 					      //Cerramos los recursos
 					      try{
 					         if(orden!=null)
-					        	 conexion.close();
+					        	 orden.close();
 					      }catch(SQLException se){
 					      }
 					      try{
