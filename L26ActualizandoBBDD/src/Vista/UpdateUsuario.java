@@ -36,7 +36,7 @@ import java.awt.Color;
 
 /*Clase que busca por el nombre todos los usuarios que aparecen
  * en una BBDD con dicho nombre, los muestra en un JComboBox y permite elegir
- * en caso de que haya varios casos
+ * en caso de que haya varios casos y actualizar los datos
  */
 public class UpdateUsuario extends JFrame {
 
