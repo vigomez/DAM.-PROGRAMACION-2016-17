@@ -17,7 +17,7 @@ public class ConexionDB {
 	private String url;
 	
 	//Conexion
-	private Connection conexion = null;// maneja la conexió
+	private Connection conexion = null;// maneja la conexión
 	
 	//Instancia unica
 	private static ConexionDB instance = null;
@@ -32,15 +32,16 @@ public class ConexionDB {
 	}
 	
 	//Implementar SingleTon: solo se crea un objeto de la clase si no hay otro creado y se define static
-	//Solo hay una copia del mismo y su valor es compartido por todos los objetos de la clase, por lo que
-	//aunque se declare e intente crear un nuevo objeto ConexionDB éste no podrá crear una nueva conexión
-	//a la BBDD
+	//de manera que solo hay una copia del mismo y su valor es compartido por todos los objetos de la clase, por lo que
+	//no se podrá crear un nuevo objeto ConexionDB.
 	
 	public static ConexionDB getInstance(String HOST,String BBDD,String USER,String PASS) {
 	      if(instance == null) {
 	         instance = new ConexionDB(HOST,BBDD,USER,PASS);
+	         return instance;
 	      }
-	      return instance;
+	      return null;
+	      //Si aquí hiciésemos return instance; se devolvería un objeto idéntico al creado anteriormente.
 	   }
 	
 	//Conectamos con la BBDD

@@ -33,7 +33,7 @@ public class modeloUsuarios {
 	}
 	
 	//Método para sacar toda la lista de datos por consola
-	public void getDatosCorredores(){
+	public void getDatosUsuarios(){
 		try{
 			instruccion = this.conexion.createStatement();
 			conjuntoResultados = instruccion.executeQuery(USUARIOS_LIST);
