@@ -14,7 +14,7 @@ public class Usuarios {
 		usuariosDB=ConexionDB.getInstance("localhost","usuarios","root","");
 		usuariosDB2=ConexionDB.getInstance("localhost","usuarios","root","");
 		
-		if (usuariosDB2==null)
+		if (usuariosDB2==usuariosDB)
 		{System.out.println("Ya hay una instancia del objeto y no se crea otra diferente\n");}
 		
 		//Ejemplo para un host externo

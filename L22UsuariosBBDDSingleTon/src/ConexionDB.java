@@ -38,10 +38,8 @@ public class ConexionDB {
 	public static ConexionDB getInstance(String HOST,String BBDD,String USER,String PASS) {
 	      if(instance == null) {
 	         instance = new ConexionDB(HOST,BBDD,USER,PASS);
-	         return instance;
 	      }
-	      return null;
-	      //Si aquí hiciésemos return instance; se devolvería un objeto idéntico al creado anteriormente.
+	      return instance;
 	   }
 	
 	//Conectamos con la BBDD
