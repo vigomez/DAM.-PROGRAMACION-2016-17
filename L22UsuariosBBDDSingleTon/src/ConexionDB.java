@@ -19,7 +19,7 @@ public class ConexionDB {
 	//Conexion
 	private Connection conexion = null;// maneja la conexión
 	
-	//Instancia unica
+	//Instancia unica de la classe ConexionDB por ser static
 	private static ConexionDB instance = null;
 	
 	//Para implementar el patrón SingleTon el constructor de la clase se define como private
