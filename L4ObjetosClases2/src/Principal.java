@@ -7,8 +7,8 @@ public class Principal {
 		
 		Casa c1=new Casa();
 		System.out.println("Hemos construido la primera casa");
-		Casa c2=new Casa();
-		System.out.println("Hemos construido la segunda casa");
+		Chalet c2=new Chalet();
+		System.out.println("Hemos construido un chalet");
 		
 
 	}
