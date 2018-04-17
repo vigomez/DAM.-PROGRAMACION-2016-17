@@ -102,7 +102,7 @@ public class UsuariosDB {
 			      //Cerramos los recursos
 			      try{
 			         if(orden!=null)
-			        	 conexion.close();
+			        	 orden.close();
 			      }catch(SQLException se){
 			      }
 			      try{
@@ -154,7 +154,7 @@ public class UsuariosDB {
 					      //Cerramos los recursos
 					      try{
 					         if(orden!=null)
-					        	 conexion.close();
+					        	 orden.close();
 					      }catch(SQLException se){
 					      }
 					      try{
